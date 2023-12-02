@@ -1,0 +1,521 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Box Office</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="icon" href="../images/download.jpg">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/Style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script> 
+            $(document).ready(function(){
+              $("#flip").click(function(){
+                $("#panel").slideToggle("slow");
+              });
+            });
+            $(document).ready(function () {			
+              $('#flip').mouseenter(function (data) {		
+                 $(this).css('color','Red');
+              });
+              $('#flip').mouseleave(function (data) {
+              $(this).css('color','white');
+              });
+            });
+                $(document).ready(function(){
+                $("img").click(function(){
+                  $("#img").slideUp(2000).slideDown(2000);
+                });
+              });
+         </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <img id="img" class="navbar-brand" src="../images/Logo.png" alt="" width="200px">
+              </div>
+              
+              <ul class="nav navbar-nav">
+                
+                <li class=" nav-item "><a  class="nav-link" href="/">Home</a></li>
+                <li class=" nav-item "><a class="nav-link" href="/add">Admin</a></li>
+            
+              </ul>
+            </div>
+          </nav>
+          <div class="container-fluid">
+            <div id="flip">Show Search Bar</div>
+            
+            <div id="panel">
+          <div class="input-group col ">
+            
+            <form method="POST" action="/search/mid" >
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w " placeholder="Search by MID" />
+                </div>
+            </form>
+            <form method="POST" action="/search/title" >
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w " placeholder="Search by Title" />
+                </div>
+            </form>
+            <form method="POST" action="/search/year">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w" placeholder="Search by Year"/>
+                </div>
+            </form>
+            <form method="POST" action="/search/rate">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w" placeholder="Search by Rate"/>
+                </div>
+            </form>
+            <form method="POST" action="/search/metascore">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w" placeholder="MetaScore"/>
+                </div>
+            </form>
+            <form method="POST" action="/search/genre">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w " placeholder="Search by Genre"/>
+                </div>
+            </form>
+            <form method="POST" action="/search/director">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w " placeholder="Search by Director"/>
+                </div>
+            </form>
+            <form method="POST" action="/search/actor">
+                <div class="col">
+                    <input type="text" name="data" id="data" class="form-control w" placeholder="Search by Actor"/>
+                </div>
+            </form>
+          </div>
+        </div>
+        </div>
+        <div class=" container-fluid " >
+          <div class="row">
+            <div class="backgraound-image"></div>
+          </div>
+        </div>
+
+        <% if(action == 'add' ) { %>
+
+                
+
+        <div class="container">
+            <h1  class="text-center mt-3 mb-3 text-light"><%= title %></h1></em>
+            <script> 
+                $(document).ready(function () {			
+              $('#myDiv').mouseenter(function (data) {		
+                 $(this).css('color','blue');
+              });
+              $('#myDiv').mouseleave(function (data) {
+              $(this).css('color','white');
+              });
+                });
+              </script>
+            <div class="card">
+                <div class=" bg-dark text-light ">
+                    <form method="POST" action="/add_data" class=" m-3 ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Movie ID</label>
+                                    <input type="int" name="mid" id="mid" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Title</label>
+                                    <input type="text" name="title" id="title" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Year</label>
+                                    <input type="text" name="year" id="year" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Runtime</label>
+                                    <input type="text" name="runtime" id="runtime" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Genre</label>
+                                    <input type="text" name="genre" id="genre" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Director</label>
+                                    <input type="text" name="director" id="director" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Writer</label>
+                                    <input type="text" name="writer" id="writer" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Actors</label>
+                                    <input type="text" name="actor" id="actor" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Metascore</label>
+                                    <input type="text" name="metascore" id="metascore" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>imdbRating</label>
+                                    <input type="text" name="rate" id="rate" class="form-control" required/>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="submit" name="submit_button" class="btn btn-primary" value="Add" />
+                            <input type="reset" name="submit_button" class="btn btn-warning " value="Clear" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row ">
+
+                    <div class="movie-details d-flex flex-wrap ">
+                        
+                        <%
+                        if(fetchedData.length > 0)
+                        {
+                            fetchedData.forEach(function(data){
+                        %>
+                    <div class=" ml-5  text-center border border-light m-4 bor">
+                        <h1 class=" text-primary " ><%= data.title %></h1>
+                        
+                        <p class=" text-light ">Movie ID: <%= data.mid %> </p>
+                        <p class=" text-light ">Year: <%= data.year %> </p>
+                        <p class=" text-light ">Runtime: <%= data.runtime %> </p>
+                        <p class=" text-light ">Genre: <%= data.genre %> </p>
+                        <p class=" text-light ">Director: <%= data.director %> </p>
+                        <p class=" text-light ">Writer: <%= data.writer %></p>
+                        <p class=" text-light ">Actor: <%= data.actor %></p>
+                        <p class=" text-light ">MetaScore: <%= data.metascore %></p>
+                        <p class=" text-light ">imdbRate: <%= data.rate %></p>
+                        <a href="/edit/<%= data.id %>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="/delete/<%= data.id %>" class="btn btn-danger btn-sm">Delete</a>
+                        
+                    </div>
+                    <%  }); }  %>
+                    </div>
+                </div>
+                
+            </div>
+
+            <% } else if(action == 'edit') { %>
+                <style>
+                    body{
+                        background: #000;
+                    }
+                    .main {
+                      width: 50%;
+                      margin: 50px auto;
+                    }
+
+
+
+                    .has-search .form-control {
+                      padding-left: 2.375rem;
+                    }
+
+                    .has-search .form-control-feedback {
+                      position: absolute;
+                      z-index: 2;
+                      display: block;
+                      width: 2.375rem;
+                      height: 2.375rem;
+                      line-height: 2.375rem;
+                      text-align: center;
+                      pointer-events: none;
+                      color: #aaa;
+                    }
+                    .movie-details {
+                      margin: auto;
+                      max-width: 1000px;
+                    }
+
+                    /* footer */
+                    .footer-basic {
+                        padding:40px 0;
+                        background-color:#000000;
+                        color:#ffffff;
+                        margin-top: 100px;
+                      }
+
+                      .footer-basic ul {
+                        padding:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size:18px;
+                        line-height:1.6;
+                        margin-bottom:0;
+                      }
+
+                      .footer-basic li {
+                        padding:0 10px;
+                      }
+
+                      .footer-basic ul a {
+                        color:inherit;
+                        text-decoration:none;
+                        opacity:0.1;
+                        transition: 0.3s;
+                      }
+
+                      .footer-basic ul a:hover {
+                        opacity:1;
+                      }
+
+                      .footer-basic .social {
+                        text-align:center;
+                        padding-bottom:25px;
+
+                      }
+                      .social img{
+                        width: 45px;
+                        margin: 5px;
+                        border:1px solid #fff;
+                        border-radius: 30px;
+                        background: #fff;
+                      }
+
+                      .footer-basic .social  img {
+                        opacity:0.5;
+                        transition: 0.3s;
+                      }
+
+                      .footer-basic .social  img:hover {
+                        opacity:1;
+
+                      }
+
+                      .footer-basic .copyright {
+                        margin-top:15px;
+                        text-align:center;
+                        font-size:13px;
+                        color:#aaa;
+                        margin-bottom:0;
+                      }
+                      .bor{
+                        border-radius: 20px;
+                      }
+                      .w{
+                        width: 150px;
+                      }
+                      #panel, #flip {
+    padding: 5px;
+    color: #fff;
+    text-align: center;
+    background-color: #000000;
+    border: solid 1px #0800ff;
+  }
+  
+  #panel {
+    padding: 40px;
+    display: none;
+  }  
+
+                </style>
+                <div class=" bg-dark text-light p-2 m-5 bor">
+                    <form method="POST" action="/editing/<%= fetchedData.id %>"  >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Title</label>
+                                    <input type="text" name="title" id="title" class="form-control"value="<%= fetchedData.title %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Movie ID</label>
+                                    <input type="text" name="mid" id="mid" class="form-control"value="<%= fetchedData.mid %>" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Year</label>
+                                    <input type="text" name="year" id="year" class="form-control" value="<%= fetchedData.year %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Runtime</label>
+                                    <input type="text" name="runtime" id="runtime" class="form-control" value="<%= fetchedData.runtime %>" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Genre</label>
+                                    <input type="text" name="genre" id="genre" class="form-control" value="<%= fetchedData.genre %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Director</label>
+                                    <input type="text" name="director" id="director" class="form-control" value="<%= fetchedData.director %>" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Writer</label>
+                                    <input type="text" name="writer" id="writer" class="form-control" value="<%= fetchedData.writer %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Actors</label>
+                                    <input type="text" name="actor" id="actor" class="form-control" value="<%= fetchedData.actor %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Metascore</label>
+                                    <input type="text" name="metascore" id="metascore" class="form-control" value="<%= fetchedData.metascore %>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>imdbRating</label>
+                                    <input type="text" name="rate" id="rate" class="form-control" value="<%= fetchedData.rate %>" required/>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="mb-3">
+                            
+                            <input type="submit" name="submit_button" class="btn btn-primary" value="Update" />
+
+                        </div>
+                    </form>
+                </div>
+        </div>
+                
+        <% } else if(change='normal') { %>             
+
+                            <!-- Start -->
+                           
+            <div class="container-fluid">
+            <h1 class="text-center mt-3 mb-3 text-light"><%= title %></h1>
+
+                <div class="row ">
+
+                    <div class="movie-details d-flex flex-wrap ">
+                        
+                        <%
+                        if(fetchedData.length > 0)
+                        {
+                            fetchedData.forEach(function(data){
+                        %>
+                    <div class=" ml-5  text-center border border-light m-4 bor">
+                        <h1 class=" text-primary " ><%= data.title %></h1>
+                        
+                        <p class=" text-light ">Movie ID: <%= data.mid %> </p>
+                        <p class=" text-light ">Year: <%= data.year %> </p>
+                        <p class=" text-light ">Runtime: <%= data.runtime %> </p>
+                        <p class=" text-light ">Genre: <%= data.genre %> </p>
+                        <p class=" text-light ">Director: <%= data.director %> </p>
+                        <p class=" text-light ">Writer: <%= data.writer %></p>
+                        <p class=" text-light ">Actor: <%= data.actor %></p>
+                        <p class=" text-light ">MetaScore: <%= data.metascore %></p>
+                        <p class=" text-light ">imdbRate: <%= data.rate %></p>
+                    </div>
+                    <%  }); }  %>
+                    </div>
+                </div>
+              
+            </div>
+                    
+                
+            <% } %>
+
+            <div class="footer-basic">
+                <script>
+                    $(document).ready(function(){
+                      $("#hide").click(function(){
+                        $("footer").hide();
+                      });
+                      $("#show").click(function(){
+                        $("footer").show();
+                      });
+                    });
+                    </script>
+                <footer id="footer">
+                    <div class="social">
+                      <a href=""><img src="../images/fb.png" alt=""></a>
+                      <a href=""><img src="../images/i.png" alt=""></a>
+                      <a href=""><img src="../images/yt.png" alt=""></a>
+                      <a href=""><img src="../images/tw.png" alt=""></a>
+                      <a href=""><img src="../images/v.png" alt=""></a>
+                    </div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Home</a></li>
+                        <li class="list-inline-item"><a href="#">Services</a></li>
+                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="#">Terms</a></li>
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <p class="copyright"><em>B.M.K.B Somarathna | SA22403810</em></p>
+
+                </footer>
+
+                
+            <button id="hide" class="btn btn-dark">Hide Footer</button>
+             <button id="show" class="btn btn-dark">Show Footer</button>
+                
+
+            </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

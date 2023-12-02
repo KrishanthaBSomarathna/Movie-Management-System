@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/Style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3 text-light"><%= title %></h1>
+            
+            <% if(action == 'search') { %>
+               
+
+
+        </div> 
+        <!-- start -->
+        <div class="container-fluid">
+            <div class="row ">
+
+                <div class="movie-details d-flex flex-wrap ">
+                    
+                    <%
+                    if(fetchedData.length > 0)
+                    {
+                        fetchedData.forEach(function(data){
+                    %>
+                <div class=" ml-5  text-center border border-light m-4 bor">
+                    <h1 class=" text-primary " ><%= data.title %></h1>
+                    
+                    <p class=" text-light ">Movie ID: <%= data.mid %> </p>
+                    <p class=" text-light ">Year: <%= data.year %> </p>
+                    <p class=" text-light ">Runtime: <%= data.runtime %> </p>
+                    <p class=" text-light ">Genre: <%= data.genre %> </p>
+                    <p class=" text-light ">Director: <%= data.mid %> </p>
+                    <p class=" text-light ">Writer: <%= data.writer %></p>
+                    <p class=" text-light ">Actor: <%= data.actor %></p>
+                    <p class=" text-light ">MetaScore: <%= data.metascore %></p>
+                    <p class=" text-light ">imdbRate: <%= data.rate %></p>
+                </div>
+                <%  }); }  %>
+                </div>
+            </div>
+          
+        </div>
+        
+    
+<% } %>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
